@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>МОНТАЖ КАУБОЯ ООД</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f8;
+    color:#222;
+}
+
+/* HEADER */
+header{
+    background:#1c1f26;
+    color:white;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position: relative;
+    z-index: 10;
+}
+
+header h1{
+    font-size:20px;
+    letter-spacing:1px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    cursor:pointer;
+}
+
+nav a:hover{
+    color:#f0b400;
+}
+
+/* HERO */
+.hero{
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1581092583537-20d51b4b4f1b?auto=format&fit=crop&w=1600&q=80');
+    background-size:cover;
+    background-position:center;
+    height:80vh;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero h2{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+.btn{
+    background:#f0b400;
+    border:none;
+    padding:15px 35px;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.btn:hover{
+    background:#d89f00;
+}
+
+/* SECTIONS */
+.section{
+    padding:70px 40px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.section h3{
+    text-align:center;
+    font-size:28px;
+    margin-bottom:40px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:6px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.card h4{
+    margin-bottom:15px;
+    color:#1c1f26;
+}
+
+/* DROPDOWN PANELS */
+.gallery-dropdown {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #1c1f26;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+    padding: 0 40px;
+    z-index: 9999;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.gallery-dropdown.open {
+    max-height: 80vh;
+    padding: 20px 40px 40px 40px;
+    overflow-y:auto;
+}
+
+.gallery-dropdown h3 {
+    color: #f0b400;
+    margin-bottom: 15px;
+}
+
+.gallery-dropdown p, .gallery-dropdown ul, .gallery-dropdown li{
+    color: white;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Gallery/Services grid */
+.gallery-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.gallery-grid img{
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover{
+    transform: scale(1.05);
+}
+
+/* Close button */
+.gallery-close {
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #f0b400;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 9998;
+}
+
+.overlay.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* FOOTER */
+footer{
+    background:#1c1f26;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>МОНТАЖ КАУБОЯ ООД</h1>
+<nav>
+<ul>
+<li><a href="#">Начало</a></li>
+<li><a onclick="toggleServices()" style="cursor:pointer;">Сертификати</a></li>
+<li><a onclick="toggleGallery()" style="cursor:pointer;">Галерия</a></li>
+<li><a onclick="toggleContacts()" style="cursor:pointer;">Контакти</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="hero">
+    <h2>Нашият девиз:<br>„ПО ПЪТЯ НА ЗЪРНОТО”</h2>
+    <p>Монтаж, производство и монтаж на машини и съоръжения.</p>
+</section>
+
+<section class="section">
+<h3>Основни дейности</h3>
+<div class="grid">
+<div class="card">
+<h4>Силози и резервоари</h4>
+<p>Монтаж на силози, бункери и съоръжения за съхранение.</p>
+</div>
+
+<div class="card">
+<h4>Транспортни системи</h4>
+<p>Редлери, елеватори, шнекове и транспортни ленти.</p>
+</div>
+
+<div class="card">
+<h4>Стоманени конструкции</h4>
+<p>Проектиране и изграждане на халета и конструкции.</p>
+</div>
+
+<div class="card">
+<h4>Инсталации</h4>
+<p>Монтаж на инсталации за зърно и рафинерии.</p>
+</div>
+</div>
+</section>
+
+<!-- Services Dropdown -->
+<div class="gallery-dropdown" id="servicesDropdown">
+<span class="gallery-close" onclick="toggleServices()">×</span>
+
+<h3>Сертификати</h3>
+<div class="gallery-grid">
+  <div class="card">
+    <img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/%D0%A1%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D0%B8-%D0%B4%D0%B8%D0%B3%D0%B8%D1%82%D0%B0%D0%BB%D0%BD%D0%B8-%D0%9E%D0%BA%D0%BE%D0%BB%D0%BD%D0%B0-%D1%81%D1%80%D0%B5%D0%B4%D0%B0-2.jpg" alt="Серфитикат">
+    <h4>Серфитикат</h4>
+    <p>Монтаж на силози, бункери и съоръжения за съхранение.</p>
+  </div>
+  <div class="card">
+    <img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/%D0%A1%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D0%B8-%D0%B4%D0%B8%D0%B3%D0%B8%D1%82%D0%B0%D0%BB%D0%BD%D0%B8-%D0%9E%D0%BA%D0%BE%D0%BB%D0%BD%D0%B0-%D1%81%D1%80%D0%B5%D0%B4%D0%B0-1.jpg" alt="Серфитикат">
+    <h4>Серфитикат</h4>
+    <p>Редлери, елеватори, шнекове и транспортни ленти.</p>
+  </div>
+  <div class="card">
+    <img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/%D0%A1%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D0%B8-%D0%B4%D0%B8%D0%B3%D0%B8%D1%82%D0%B0%D0%BB%D0%BD%D0%B8-%D0%9E%D0%BA%D0%BE%D0%BB%D0%BD%D0%B0-%D1%81%D1%80%D0%B5%D0%B4%D0%B0-1.jpg" alt="Серфитикат">
+    <h4>Серфитикат</h4>
+    <p>Проектиране и изграждане на халета и конструкции.</p>
+  </div>
+  <div class="card">
+    <img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/%D0%A1%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D0%B8-%D0%B4%D0%B8%D0%B3%D0%B8%D1%82%D0%B0%D0%BB%D0%BD%D0%B8-OHSAS-2.jpg" alt="Серфитикат">
+    <h4>Серфитикат</h4>
+    <p>Монтаж на инсталации за зърно и рафинерии.</p>
+  </div>
+    <div class="card">
+    <img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/%D0%A1%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D0%B8-%D0%B4%D0%B8%D0%B3%D0%B8%D1%82%D0%B0%D0%BB%D0%BD%D0%B8-ISO-1.jpg" alt="Серфитикат">
+    <h4>Серфитикат</h4>
+    <p>Монтаж на инсталации за зърно и рафинерии.</p>
+  </div>
+    <div class="card">
+    <img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/%D0%A1%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D0%B8-%D0%B4%D0%B8%D0%B3%D0%B8%D1%82%D0%B0%D0%BB%D0%BD%D0%B8-OHSAS-2.jpg" alt="Серфитикат">
+    <h4>Серфитикат</h4>
+    <p>Монтаж на инсталации за зърно и рафинерии.</p>
+  </div>
+</div>
+</div>
+
+<!-- Gallery Dropdown -->
+<div class="gallery-dropdown" id="galleryDropdown">
+<span class="gallery-close" onclick="toggleGallery()">×</span>
+
+<h3>Галерия</h3>
+<div class="gallery-grid">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/100_0349.jpg" alt="Галерия 1">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/DSC06322.jpg" alt="Галерия 2">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/DSC06328.jpg" alt="Галерия 3">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/IMG_7049.jpg" alt="Галерия 4">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/IMG_1817-1.jpg" alt="Галерия 6">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/IMG_3107.jpg" alt="Галерия 7">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/IMG_1822.jpg" alt="Галерия 8">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/IMG_4169.jpg" alt="Галерия 9">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/Picture-453.jpg" alt="Галерия 9">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/Picture-450.jpg" alt="Галерия 9">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/Picture-001.jpg" alt="Галерия 9">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/IMGP1966.jpg" alt="Галерия 9">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/Image018.jpg" alt="Галерия 9">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/Image015.jpg" alt="Галерия 9">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/DSC00197.jpg" alt="Галерия 9">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/DSC00194-e1474915651921.jpg" alt="Галерия 19">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/DSC00189.jpg" alt="Галерия 9">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/DSC00180.jpg" alt="Галерия 9">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/20150926_133759.jpg" alt="Галерия 9">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/DSC00197.jpg" alt="Галерия 9">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/DSC00194-e1474915651921.jpg" alt="Галерия 9">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/SDC19799.jpg" alt="Галерия 1">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/P1180155.jpg" alt="Галерия 2">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/P1180190.jpg" alt="Галерия 3">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/P1180193.jpg" alt="Галерия 4">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/P1180230.jpg" alt="Галерия 5">
+<img src="https://www.montazh-kauboya.com/wp-content/uploads/2016/09/P1180266.jpg" alt="Галерия 9">
+<!-- добавете още снимки, ако желаете -->
+</div>
+</div>
+
+<!-- Contacts Dropdown -->
+<div class="gallery-dropdown" id="contactsDropdown">
+<span class="gallery-close" onclick="toggleContacts()">×</span>
+
+<h3>Контакти</h3>
+<p><strong>Управители:</strong><br>Христо Христов<br>Анна Тодорова</p>
+
+<p><strong>Офис:</strong><br>
+8602 Ямбол, България<br>
+жк "Диана" бл.12, вх.Д, ап.100, ет. 3</p>
+
+<p><strong>Производствена база:</strong><br>
+8600 Ямбол, България<br>
+кв. "Тракия" №100</p>
+
+<p><strong>Факс:</strong> +359 46 669449<br>
+<strong>Телефон:</strong> +359 46 988908<br>
+<strong>GSM:</strong> 0889221589</p>
+
+<p><strong>e-mail:</strong><br>
+montazh.kauboya@gmail.com<br>
+montage_cowboy@abv.bg</p>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay" onclick="closeAllDropdowns()"></div>
+
+<footer>
+© 2026 МОНТАЖ КАУБОЯ ООД | Всички права запазени
+</footer>
+
+<script>
+function toggleServices(){
+    const services = document.getElementById('servicesDropdown');
+    const gallery = document.getElementById('galleryDropdown');
+    const contacts = document.getElementById('contactsDropdown');
+    const overlay = document.getElementById('overlay');
+
+    if(services.classList.contains('open')){
+        services.classList.remove('open');
+        overlay.classList.remove('show');
+    } else {
+        services.classList.add('open');
+        gallery.classList.remove('open');
+        contacts.classList.remove('open');
+        overlay.classList.add('show');
+        window.scrollTo({top:0, behavior:'smooth'});
+    }
+}
+
+function toggleGallery(){
+    const gallery = document.getElementById('galleryDropdown');
+    const services = document.getElementById('servicesDropdown');
+    const contacts = document.getElementById('contactsDropdown');
+    const overlay = document.getElementById('overlay');
+
+    if(gallery.classList.contains('open')){
+        gallery.classList.remove('open');
+        overlay.classList.remove('show');
+    } else {
+        gallery.classList.add('open');
+        services.classList.remove('open');
+        contacts.classList.remove('open');
+        overlay.classList.add('show');
+        window.scrollTo({top:0, behavior:'smooth'});
+    }
+}
+
+function toggleContacts(){
+    const contacts = document.getElementById('contactsDropdown');
+    const gallery = document.getElementById('galleryDropdown');
+    const services = document.getElementById('servicesDropdown');
+    const overlay = document.getElementById('overlay');
+
+    if(contacts.classList.contains('open')){
+        contacts.classList.remove('open');
+        overlay.classList.remove('show');
+    } else {
+        contacts.classList.add('open');
+        gallery.classList.remove('open');
+        services.classList.remove('open');
+        overlay.classList.add('show');
+        window.scrollTo({top:0, behavior:'smooth'});
+    }
+}
+
+function closeAllDropdowns(){
+    document.getElementById('servicesDropdown').classList.remove('open');
+    document.getElementById('galleryDropdown').classList.remove('open');
+    document.getElementById('contactsDropdown').classList.remove('open');
+    document.getElementById('overlay').classList.remove('show');
+}
+</script>
+
+</body>
+</html>
